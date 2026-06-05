@@ -941,7 +941,7 @@ abstract class BaseGodotEditor : GodotActivity(), GameMenuFragment.GameMenuListe
 	}
 
 	private fun toggleScriptEditorOrientation() {
-		if (activeWorkspace == SCRIPT_WORKSPACE && distractionFreeModeEnabled) {
+		if (distractionFreeModeEnabled) {
 			changingOrientationAllowed = true
 			requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER
 		} else if (changingOrientationAllowed) {
