@@ -83,7 +83,7 @@ private:
 	bool closable = false;
 
 	DockLayout current_layout;
-	BitField<DockLayout> available_layouts = DOCK_LAYOUT_VERTICAL | DOCK_LAYOUT_FLOATING;
+	BitField<DockLayout> available_layouts = DOCK_LAYOUT_ALL;
 
 	bool is_open = false;
 	bool enabled = true;
