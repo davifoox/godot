@@ -240,6 +240,7 @@ HistoryDock::HistoryDock() {
 	set_icon_name("History");
 	set_dock_shortcut(ED_SHORTCUT_AND_COMMAND("docks/open_history", TTRC("Open History Dock")));
 	set_default_slot(EditorDock::DOCK_SLOT_LEFT_BR);
+	set_available_layouts(DOCK_LAYOUT_ALL);
 
 	ur_manager = EditorUndoRedoManager::get_singleton();
 	ur_manager->connect("history_changed", callable_mp(this, &HistoryDock::on_history_changed));
