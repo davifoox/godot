@@ -72,7 +72,13 @@ if env.editor_build:
 
     env.add_source_files(env.editor_sources, "*.cpp")
     env.add_source_files(env.editor_sources, gen_exporters)
-    env.add_source_files(env.editor_sources, translation_targets.keys())
+    # doc_translations.gen.cpp is 86 MB and crashes NDK clang 21 on Windows.
+    # Use a stub with an empty list instead; the editor works without translated docs.
+    non_doc_targets = [k for k in translation_targets.keys() if "doc_translations" not in k]
+    env.add_source_files(env.editor_sources, non_doc_targets)
+    stub_obj = env.Object("#editor/translations/doc_translations_stub.cpp")
+    if stub_obj not in env.editor_sources:
+        env.editor_sources.append(stub_obj)
 
     SConscript("animation/SCsub")
     SConscript("asset_library/SCsub")
